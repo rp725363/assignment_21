@@ -1,0 +1,94 @@
+1. Add the current date to the text file today.txt as a string.
+Ans:-
+Sure! Here's some Python code that will add the current date to the text file today.txt as a string:
+import datetime
+today = datetime.date.today().strftime("%Y-%m-%d")
+with open("today.txt", "a") as f:
+    f.write(today + "\n")
+After running this code we will get the output as today's date
+
+2. Read the text file today.txt into the string today_string
+Ans:-
+Here's some Python code that will read the contents of the file today.txt into a string variable called today_string:
+with open("today.txt", "r") as f:
+    today_string = f.read()
+print(today_string)
+After running this code, the today_string variable should contain the contents of the today.txt file as a string. If the file contains multiple lines, they will be included in the string with newline characters (\n) separating each line.
+
+3. Parse the date from today_string.
+Ans:-
+If you have read the contents of the today.txt file into a string variable called today_string, you can parse the date from that string using the datetime module in Python. Here's some code that will do that
+import datetime
+parsed_date = datetime.datetime.strptime(today_string.strip(), "%Y-%m-%d").date()
+print(parsed_date)
+After running this code, the parsed_date variable should contain a date object representing the date that was parsed from the today_string variable.
+
+4. List the files in your current directory
+Ans:-
+Here's some Python code that will list the files in your current directory using the os module
+import os
+current_directory = os.getcwd()
+files = os.listdir(current_directory)
+print("Files in current directory:")
+for file in files:
+    print(file)
+fter running this code, you should see a list of the files in your current directory printed to the console.
+
+5. Create a list of all of the files in your parent directory (minimum five files should be available).
+Ans:-
+Here's some Python code that will create a list of all the files in your parent directory
+import os
+current_directory = os.getcwd()
+parent_directory = os.path.dirname(current_directory)
+files = os.listdir(parent_directory)
+files = [f for f in files if os.path.isfile(os.path.join(parent_directory, f))]
+print("Files in parent directory:")
+for file in files:
+    print(file)
+After running this code, you should see a list of the files in your parent directory printed to the console
+6. Use multiprocessing to create three separate processes. Make each one wait a random number of seconds between one and five, print the current time, and then exit.
+Ans:-
+Here's some Python code that will use the multiprocessing module to create three separate processes, each of which will wait a random number of seconds between one and five, print the current time, and then exit:
+import multiprocessing
+import random
+import time
+import datetime
+def worker():
+wait_time = random.randint(1, 5)
+    time.sleep(wait_time)
+    current_time = datetime.datetime.now()
+    print(f"Process {multiprocessing.current_process().name} finished at {current_time}")
+if __name__ == "__main__":
+    processes = [multiprocessing.Process(target=worker, name=f"Process {i}") for i in range(3)]
+    for process in processes:
+        process.start()
+    for process in processes:
+        process.join()
+After running this code, you should see output that shows each process finishing at a slightly different time, due to the random wait times.
+7. Create a date object of your day of birth.
+Ans:-
+Here's some Python code that will create a date object of my day of birth
+import datetime
+my_birthdate = datetime.date(1997, 08, 20)
+print("My birthdate is:", my_birthdate)
+After running this code, you should see output that shows the date object representing my day of birth
+8. What day of the week was your day of birth?
+Ans:-
+we can use the weekday() method of the date object. Here's some Python code that will print the day of the week on which I was born
+import datetime
+my_birthdate = datetime.date(1997, 8, 20)
+day_of_week = my_birthdate.weekday()
+days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+day_name = days_of_week[day_of_week]
+print("I was born on a", day_name)
+After running this code, you should see output that shows the day of the week on which I was born.
+
+9. When will you be (or when were you) 10,000 days old?
+Ans:-
+when I will be or when I was 10,000 days old, we can use the timedelta() method of the datetime module. Here's some Python code that will calculate the date when I will be or when I was 10,000 days old
+import datetime
+my_birthdate = datetime.date(1997, 8, 20)
+days_old = datetime.timedelta(days=10000)
+ten_thousand_days = my_birthdate + days_old
+print("I will be (or was) 10,000 days old on:", ten_thousand_days)
+After running this code, you should see output that shows the date when I will be or when I was 10,000 days old
